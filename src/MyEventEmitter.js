@@ -15,7 +15,7 @@ class MyEventEmitter {
 
   once(event, callback) {
     const wrapper = (...args) => {
-      callback(args);
+      callback(...args);
       this.off(event, wrapper);
     };
 
@@ -43,13 +43,13 @@ class MyEventEmitter {
   prependListener(event, callback) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
-    } else {
-      this.listeners[event].unshift(callback);
     }
+
+    this.listeners[event].unshift(callback);
   }
   prependOnceListener(event, callback) {
     const wrapper = (...args) => {
-      callback(args);
+      callback(...args);
       this.off(event, wrapper);
     };
 
