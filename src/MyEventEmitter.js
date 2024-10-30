@@ -1,7 +1,9 @@
 'use strict';
 
 class MyEventEmitter {
-  listeners = {};
+  constructor() {
+    this.listeners = {};
+  }
 
   on(event, callback) {
     if (!this.listeners[event]) {
